@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UI/UX Designer crafting purposeful digital experiences.">
+  <meta name="theme-color" content="#0a0a0f">
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Harshraj Dodiya — UI/UX Designer">
+  <meta property="og:description" content="UI/UX Designer crafting purposeful digital experiences.">
+  <meta property="og:type"        content="website">
+
+  <title>Harshraj Dodiya — UI/UX Designer</title>
+
+  <!-- Preconnect for fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <!-- Favicon — inline SVG -->
+  <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='16' fill='%230a0a0f'/><text y='72' x='50' text-anchor='middle' font-size='58' font-family='system-ui,sans-serif' font-weight='700' fill='%23c8d6e5'>H</text></svg>">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+
+  <style>
+    /* Minimal loading state — prevent FOUC */
+    body.js-loading { visibility: hidden; }
+  </style>
+</head>
+
+<body class="js-loading">
+
+  <!-- ======================================================
+       NAVIGATION
+  ======================================================= -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner container">
+
+      <a href="#home" class="nav__logo" aria-label="Harshraj Dodiya — Home">H.D.</a>
+
+      <!-- Hamburger (mobile) -->
+      <button class="nav__toggle"
+              id="navToggle"
+              type="button"
+              aria-label="Toggle navigation menu"
+              aria-expanded="false"
+              aria-controls="navMobile">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <!-- Desktop links -->
+      <ul class="nav__links" role="list">
+        <li><a href="#home"            class="nav__link" data-section="home">Home</a></li>
+        <li><a href="#about"           class="nav__link" data-section="about">About</a></li>
+        <li><a href="#experience"      class="nav__link" data-section="experience">Experience</a></li>
+        <li><a href="#education"       class="nav__link" data-section="education">Education</a></li>
+        <li><a href="#certifications"  class="nav__link" data-section="certifications">Certs</a></li>
+        <li><a href="#skills"          class="nav__link" data-section="skills">Skills</a></li>
+        <li><a href="#projects"        class="nav__link" data-section="projects">Projects</a></li>
+        <li><a href="#resume"          class="nav__link" data-section="resume">Resume</a></li>
+        <li><a href="#contact"         class="nav__link nav__link--cta" data-section="contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!-- Mobile menu overlay -->
+  <nav id="navMobile"
+       class="nav__mobile"
+       role="navigation"
+       aria-label="Mobile navigation"
+       aria-hidden="true">
+    <a href="#home"           class="nav__mobile-link" data-section="home">Home</a>
+    <a href="#about"          class="nav__mobile-link" data-section="about">About</a>
+    <a href="#experience"     class="nav__mobile-link" data-section="experience">Experience</a>
+    <a href="#education"      class="nav__mobile-link" data-section="education">Education</a>
+    <a href="#certifications" class="nav__mobile-link" data-section="certifications">Certifications</a>
+    <a href="#skills"         class="nav__mobile-link" data-section="skills">Skills</a>
+    <a href="#projects"       class="nav__mobile-link" data-section="projects">Projects</a>
+    <a href="#resume"         class="nav__mobile-link" data-section="resume">Resume</a>
+    <a href="#contact"        class="nav__mobile-link" data-section="contact">Contact</a>
+  </nav>
+
+  <!-- ======================================================
+       MAIN — sections populated by main.js
+  ======================================================= -->
+  <main id="main">
+    <section id="home"            class="section section--home"            aria-label="Home"></section>
+    <section id="about"           class="section section--about"           aria-label="About"></section>
+    <section id="experience"      class="section section--experience"      aria-label="Experience"></section>
+    <section id="education"       class="section section--education"       aria-label="Education"></section>
+    <section id="certifications"  class="section section--certifications"  aria-label="Certifications"></section>
+    <section id="skills"          class="section section--skills"          aria-label="Skills"></section>
+    <section id="projects"        class="section section--projects"        aria-label="Projects"></section>
+    <section id="resume"          class="section section--resume"          aria-label="Resume"></section>
+    <section id="contact"    class="section section--contact"    aria-label="Contact"></section>
+  </main>
+
+  <!-- ======================================================
+       FOOTER
+  ======================================================= -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <p class="footer__text">Designed &amp; built by Harshraj Dodiya</p>
+      <div style="display:flex;align-items:center;gap:1.25rem;">
+        <p class="footer__text" id="footerYear"></p>
+        <a href="admin.html"
+           class="footer__admin-link"
+           title="Admin Panel"
+           aria-label="Open admin panel">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="1.75"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ======================================================
+       SCRIPTS — order matters
+  ======================================================= -->
+  <!-- Firebase SDK (compat mode — works with global variables) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <!-- Firebase project config (fill in js/firebase-config.js) -->
+  <script src="js/firebase-config.js"></script>
+  <!-- Portfolio data layer (now Firestore-powered) -->
+  <script src="js/data.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // Remove loading class early to prevent invisible flash
+    document.body.classList.remove('js-loading');
+    document.body.style.visibility = '';
+  </script>
+</body>
+</html>

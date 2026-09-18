@@ -1,0 +1,299 @@
+/* ============================================================
+   css/components.css — Nav · Buttons · Tags · Cards · Misc
+   ============================================================ */
+
+/* ---- Navigation ------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-nav);
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  transition: background var(--t-base), border-color var(--t-base), backdrop-filter var(--t-base);
+  border-bottom: 1px solid transparent;
+}
+
+.nav.is-scrolled {
+  background: rgba(10, 10, 15, 0.88);
+  border-bottom-color: var(--border);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav__inner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav__logo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.04em;
+  transition: color var(--t-fast);
+  user-select: none;
+}
+
+.nav__logo:hover {
+  color: var(--accent-light);
+}
+
+/* Desktop links */
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.nav__link {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  padding: 0.35rem 0.625rem;
+  border-radius: var(--r-sm);
+  transition: color var(--t-fast);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text-primary);
+}
+
+.nav__link--cta {
+  margin-left: 0.5rem;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-full);
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+
+.nav__link--cta:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent-light);
+}
+
+.nav__link--cta::after {
+  display: none !important; /* no underline on CTA */
+}
+
+/* Hamburger toggle */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: var(--r-sm);
+  transition: background var(--t-fast);
+}
+
+.nav__toggle:hover {
+  background: var(--bg-elevated);
+}
+
+.nav__toggle span {
+  display: block;
+  height: 1.5px;
+  border-radius: 2px;
+  background: var(--text-primary);
+  transform-origin: center;
+  transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+  width: 22px;
+}
+
+.nav__toggle span:nth-child(2) { width: 16px; }
+
+.nav__toggle.is-open span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  width: 22px;
+}
+.nav__toggle.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.nav__toggle.is-open span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  width: 22px;
+}
+
+/* Mobile menu overlay */
+.nav__mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-nav) - 1);
+  background: rgba(10, 10, 15, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base);
+}
+
+.nav__mobile.is-open {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav__mobile-link {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 6vw, 3rem);
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  padding: 0.4rem 1rem;
+  transition: color var(--t-fast);
+}
+
+.nav__mobile-link:hover {
+  color: var(--text-primary);
+}
+
+.nav__mobile-link.is-active {
+  color: var(--accent-light);
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .nav__links  { display: none; }
+  .nav__toggle { display: flex; }
+}
+
+/* ---- Buttons ---------------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.875rem;
+  border-radius: var(--r-full);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background var(--t-fast), color var(--t-fast),
+              transform var(--t-spring), box-shadow var(--t-base);
+}
+
+.btn-primary:hover {
+  background: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 127, 165, 0.2);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-primary svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.875rem 1.875rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: border-color var(--t-fast), background var(--t-fast),
+              transform var(--t-spring);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  background: var(--accent-dim);
+  color: var(--accent-light);
+  transform: translateY(-2px);
+}
+
+/* ---- Tags / Pills ----------------------------------------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: transparent;
+  user-select: none;
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent-light);
+  background: var(--accent-dim);
+}
+
+/* ---- Divider ---------------------------------------------- */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+/* ---- No-image placeholder in project card ---------------- */
+.project-card__img-inner {
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 28px 28px;
+  position: relative;
+}
+
+.project-card__img-inner::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* ---- Empty state (no photo) ------------------------------- */
+.photo-initials {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--border-hover);
+  letter-spacing: -0.04em;
+  user-select: none;
+}

@@ -1,0 +1,244 @@
+/* ============================================================
+   css/animations.css — Keyframes · Scroll-reveal · Transitions
+   ============================================================ */
+
+/* ---- Keyframes -------------------------------------------- */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1);    }
+}
+
+@keyframes bounceY {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(8px); }
+}
+
+@keyframes drawLine {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes drawLineY {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+@keyframes dotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ---- Scroll-reveal base ----------------------------------- */
+/* Elements start hidden; JS adds .is-visible to trigger them */
+
+[data-animate] {
+  opacity: 0;
+  transition: opacity var(--t-slow), transform var(--t-slow);
+}
+
+[data-animate].is-visible {
+  opacity: 1;
+  transform: none !important;
+}
+
+[data-animate="fade-up"] {
+  transform: translateY(30px);
+}
+
+[data-animate="fade-in"] {
+  /* opacity only — no transform */
+}
+
+[data-animate="slide-left"] {
+  transform: translateX(-32px);
+}
+
+[data-animate="slide-right"] {
+  transform: translateX(32px);
+}
+
+[data-animate="scale-up"] {
+  transform: scale(0.94);
+}
+
+/* ---- Stagger delay via CSS custom property --------------- */
+/* JS sets `--delay` on each child of [data-stagger] */
+[data-stagger] > * {
+  transition-delay: var(--delay, 0s) !important;
+}
+
+/* ---- Hero entry animations -------------------------------- */
+.hero__greeting {
+  opacity: 0;
+  animation: fadeUp 0.6s ease 0.2s forwards;
+}
+
+.hero__name-wrap {
+  opacity: 0;
+  animation: fadeIn 0.1s ease 0.5s forwards;
+}
+
+.hero__role-wrap {
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.6s forwards;
+}
+
+.hero__tagline {
+  opacity: 0;
+  animation: fadeUp 0.6s ease 1.8s forwards;
+}
+
+.hero__avail {
+  opacity: 0;
+  animation: fadeIn 0.6s ease 2s forwards;
+}
+
+.hero__scroll {
+  opacity: 0;
+  animation: fadeIn 0.8s ease 2.2s forwards;
+}
+
+/* ---- Scroll indicator bounce ------------------------------ */
+.scroll-arrow {
+  width: 14px;
+  height: 14px;
+  animation: bounceY 1.8s ease-in-out infinite;
+}
+
+/* ---- Available dot pulse ---------------------------------- */
+.avail-dot {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ---- Timeline line draw ----------------------------------- */
+.timeline__line-fill {
+  transform-origin: top;
+  animation: none; /* controlled via JS scroll */
+  transition: transform 0.4s ease;
+}
+
+/* ---- Nav slide in ----------------------------------------- */
+.nav {
+  animation: navSlideDown 0.5s ease 0.05s both;
+}
+
+/* ---- Scramble character span ------------------------------ */
+.scramble-char {
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ---- Typing cursor ---------------------------------------- */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent-light);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: dotBlink 0.8s step-end infinite;
+}
+
+/* ---- Tag hover -------------------------------------------- */
+.tag {
+  transition: color var(--t-fast), border-color var(--t-fast), background var(--t-fast);
+}
+.tag:hover {
+  border-color: var(--accent);
+  color: var(--accent-light);
+  background: var(--accent-dim);
+}
+
+/* ---- Button hover ----------------------------------------- */
+.btn-primary {
+  transition: transform var(--t-spring), box-shadow var(--t-base);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* ---- Card hover ------------------------------------------- */
+.project-card {
+  transition: transform var(--t-base), border-color var(--t-base);
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-hover);
+}
+
+/* ---- Social link hover ------------------------------------ */
+.social-link {
+  transition: color var(--t-base), transform var(--t-spring);
+}
+.social-link:hover {
+  color: var(--accent-light);
+  transform: translateY(-3px);
+}
+
+/* ---- Nav link underline draw ------------------------------ */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 100%; height: 1px;
+  background: var(--accent-light);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--t-base);
+}
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---- Reduced motion ---------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
